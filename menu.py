@@ -1,3 +1,4 @@
+import time
 from core import (
     binary_ascii_run,
     hex_ascii_run,
@@ -27,3 +28,5 @@ def show_menu():
             tools[choice][1]()
         else:
             print("[!] Invalid choice. Try again.")
+            
+        time.sleep(3)

@@ -1,6 +1,8 @@
+from utils.logger import info, warn
+from utils.color import Color
+
 def binary_to_ascii(binary_str):
     try:
-        # Split by space or split every 8 bits
         if ' ' in binary_str:
             binaries = binary_str.strip().split()
         else:
@@ -9,9 +11,13 @@ def binary_to_ascii(binary_str):
         ascii_text = ''.join([chr(int(b, 2)) for b in binaries])
         return ascii_text
     except ValueError:
-        return "[!] Invalid binary input"
+        return None
 
 def run():
     binary_str = input("Enter binary:\n> ")
     result = binary_to_ascii(binary_str)
-    print("ASCII Output:", result)
+    if result:
+        info("ASCII Output:")
+        print(Color.colorize(result, Color.CYAN))
+    else:
+        warn("Invalid binary input")
